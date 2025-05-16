@@ -21,27 +21,27 @@
             <p>{{ post.body|linebreaks }}</p>
     </div>
 
-        <div class="comments-section">
-            <h3>Comments</h3>
-            <div class="comment">
-                <h4>Jane Doe</h4>
-                <p>Solo travel is definitely life-changing! I did my first solo trip last year, and I can’t recommend it enough. It gave me the confidence I never knew I had.</p>
+
+    <div class="container">
+        {% for comment in comments %}
+            <div>
+                <strong>{{comment.name}}</strong> said on {{comment.created_at}}:
+                <p>{{comment.body}}</p>
             </div>
-            <div class="comment">
-                <h4>Mark Smith</h4>
-                <p>I’ve always been hesitant to travel alone, but after reading this, I think it’s something I’ll try. Thanks for sharing your experience!</p>
-            </div>
-        </div>
-
-        <!-- Comment Form -->
-        <div class="comment-form">
-            <h3>Leave a Comment</h3>
-            <form action="#" method="post">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Comment" required></textarea>
+            {% empty %}
+            <p>No comments yet...</p>
+        {% endfor %}
+    </div>
 
 
+    <div class="container">
+        <h3>leave a comment</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" id="search-it">submit</button>
+        </form>
+    </div>
 
     <a href="{% url 'home' %}">← Back to Home</a>
 

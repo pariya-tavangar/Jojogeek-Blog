@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post,Comment
 from django.db.models import Q
+from .forms import CommentForm
 
 def home(request):
 
@@ -15,7 +16,22 @@ def home(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comments = post.comments.filter(approved=True)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            form = CommentForm()
+    else:
+        form = CommentForm()
+    return render(request, 'blog/post_detail.html',
+                   {'post': post,
+                    'comments':comments,
+                    'form':form
+                    })
 
 def all_posts(request):
     allpost = Post.objects.all()
@@ -23,3 +39,4 @@ def all_posts(request):
 
 def about(request):
     return render(request,'blog/about.html')
+
