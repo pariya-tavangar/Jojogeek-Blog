@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}About | My Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="post" style="padding: 40px; background-color: #ffffffd1;">
+        <h2 style="font-size: 36px; color: #2e3b4e;">About This Blog</h2>
+        <p style="font-size: 20px; margin-top: 20px;">
+            Welcome to <strong>My Blog</strong> — a space where thoughts, stories, and ideas come to life. This platform is designed for curious minds and passionate voices, sharing insights on tech, life, and everything in between.
+        </p>
+        <p style="font-size: 20px; margin-top: 20px;">
+            Created with care, the blog aims to provide meaningful content and engaging reads. Whether you're here to explore tutorials, follow narratives, or discover new perspectives — you're in the right place.
+        </p>
+        <p style="font-size: 20px; margin-top: 20px;">
+            Built using Django, styled with a touch of custom CSS, and driven by a love for learning and creativity.
+        </p>
+        <br>
+        <a href="{% url 'home' %}" class="nextBtn">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

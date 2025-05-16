@@ -23,3 +23,5 @@ def all_posts(request):
     allpost = Post.objects.all()
     return render(request, 'blog/all_posts.html', {'posts': allpost})
 
+def about(request):
+    return render(request,'blog/about.html')
