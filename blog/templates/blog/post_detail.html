@@ -24,9 +24,14 @@
 
     <div class="container">
         {% for comment in comments %}
-            <div>
+            <div style="font-size: 20px; background-color: rgba(255, 255, 255, 0.444);">
+                <img src="../../static/blog/img/user-icon.png" 
+                style="width: 50px;"
+                alt="">
                 <strong>{{comment.name}}</strong> said on {{comment.created_at}}:
                 <p>{{comment.body}}</p>
+                <hr style="border: 2px black solid ;">
+                <br>
             </div>
             {% empty %}
             <h3>No comments yet...</h3>
