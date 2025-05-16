@@ -7,9 +7,7 @@ def home(request):
     query = request.GET.get('q')
     if query:
         posts = Post.objects.filter(
-            Q(title__icontains=query) |
-            Q(body__icontains=query)
-            )
+            Q(title__icontains=query) | Q(body__icontains=query))
     else:
         posts = Post.objects.all()[:3]
 
