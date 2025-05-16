@@ -1,0 +1,13 @@
+/myvenv/
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+/static/
+media/
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+*.sqlite3-journal
+.env/

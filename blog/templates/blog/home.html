@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Home | My Blog{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="post-grid"> 
+
+    {% if posts %}
+        {% for post in posts %}
+
+        <div class="post">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post 1 Image">
+            {% endif %}
+            <div class="post-content">
+                <h2>{{ post.title }}</h2>
+            <p>{{ post.body|truncatewords:15 }}</p>
+            <small>By {{ post.author }} on {{ post.created_at }}</small> <br>
+                <a href="{% url 'post_detail' post.pk %}" id="read-btn">Read More &rarr;</a>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <div class="container">
+        <h2>No matching found ...</h2> <br><br>
+        <a href="{% url 'home' %}"><img src="../../static/blog/img/refreshicon.png" style="width: 100px;"></a>
+        </div>
+
+        {% endif %}
+</div>
+</div>
+
+
+<div class="container">
+    <form method="GET" action="{% url 'home' %}">
+    <a href="{% url 'all_posts' %}" class="nextBtn" style="margin-right:350px;">See All Posts</a>
+    <label href="" class="nextBtn" style="background-color: #2f3c4f;color: rgb(255, 255, 255);">Looking for something?
+        <input type="text" name="q" placeholder=" ....? " id="site-search" value="{{ request.GET.q }}"  style="margin-left: 30px;" />
+    <button id="search-it" type="submit">search</button>
+    </label>    
+    </form>
+</div>
+{% endblock %}
+

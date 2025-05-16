@@ -1,0 +1,38 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Home | My Blog{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="post-grid"> 
+    {% for post in posts %}
+
+        <div class="post">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post 1 Image">
+            {% endif %}
+            <div class="post-content">
+                <h2>{{ post.title }}</h2>
+            <p>{{ post.body|truncatewords:30 }}</p>
+            <small>By {{ post.author }} on {{ post.created_at }}</small> <br>
+                <a href="{% url 'post_detail' post.pk %}" id="read-btn">Read More &rarr;</a>
+            </div>
+        </div>
+
+
+    {% endfor %}
+</div>
+</div>
+
+
+ <div class="container">
+    <a href="{% url 'home' %}" class="nextBtn" style="margin-right:370px;">Go to homepage -></a>
+    </div>
+   <!-- <label href="" class="nextBtn" style="background-color: #2f3c4f;color: rgb(255, 255, 255);">Looking for something?
+    <input type="search" id="site-search" name="q" style="margin-left: 30px;" />
+    <button id="search-it">search</button>
+    </label>
+</div> -->
+{% endblock %}
+

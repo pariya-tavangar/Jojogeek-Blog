@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Jojogeek Blog</h1>
+        <p>Ring ring.. ow it's my boredom calling! (poor joking disorder)</p>
+    <nav>
+        <a href="{% url 'home' %}" class="nav-btn active">Home</a>
+        <a href="#" class="nav-btn">About</a>
+        <a href="#" class="nav-btn">Blog</a>
+        <a href="#" class="nav-btn">Contact</a>
+    </nav>
+</header>
+
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+
+
+
+
+
+</body>
+    <footer>
+    <p>&copy; All Right Reserved I Guess ?</p>
+    </footer>
+</html>
