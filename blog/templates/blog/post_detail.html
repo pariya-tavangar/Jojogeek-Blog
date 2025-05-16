@@ -29,20 +29,25 @@
                 <p>{{comment.body}}</p>
             </div>
             {% empty %}
-            <p>No comments yet...</p>
+            <h3>No comments yet...</h3>
         {% endfor %}
     </div>
 
 
     <div class="container">
-        <h3>leave a comment</h3>
+        <h2>leave a comment</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" id="search-it">submit</button>
+            <br>
+            <h4>* your comment will be shown after getting approved</h4>
         </form>
     </div>
 
     <a href="{% url 'home' %}">← Back to Home</a>
 
+
 {% endblock %}
+
+</div>

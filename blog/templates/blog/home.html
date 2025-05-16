@@ -4,6 +4,7 @@
 
 {% block content %}
 
+
 <div class="container">
     <div class="post-grid"> 
 
@@ -16,7 +17,7 @@
             {% endif %}
             <div class="post-content">
                 <h2>{{ post.title }}</h2>
-            <p>{{ post.body|truncatewords:15 }}</p>
+            <p>{{ post.body|truncatewords:30 }}</p>
             <small>By {{ post.author }} on {{ post.created_at }}</small> <br>
                 <a href="{% url 'post_detail' post.pk %}" id="read-btn">Read More &rarr;</a>
             </div>
@@ -36,7 +37,7 @@
 
 <div class="container">
     <form method="GET" action="{% url 'home' %}">
-    <a href="{% url 'all_posts' %}" class="nextBtn" style="margin-right:350px;">See All Posts</a>
+    <a href="{% url 'all_posts' %}" class="nextBtn">See All Posts</a>
     <label href="" class="nextBtn" style="background-color: #2f3c4f;color: rgb(255, 255, 255);">Looking for something?
         <input type="text" name="q" placeholder=" ....? " id="site-search" value="{{ request.GET.q }}"  style="margin-left: 30px;" />
     <button id="search-it" type="submit">search</button>
